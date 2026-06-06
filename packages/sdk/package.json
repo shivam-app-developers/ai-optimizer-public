@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "description": "Public SDK for authoring community framework packs for ai-optimizer. Use this to publish your own pack to npm — name it `ai-optimizer-pack-<framework>` and ai-optimizer will load it via the `plugins` config field.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shivam-app-developers/ai-optimizer.git",
+    "directory": "packages/sdk"
+  },
+  "homepage": "https://github.com/shivam-app-developers/ai-optimizer#readme",
+  "bugs": "https://github.com/shivam-app-developers/ai-optimizer/issues",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

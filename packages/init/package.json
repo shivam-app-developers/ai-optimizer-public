@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "description": "One-command setup for ai-optimizer — scans your repo, shows the savings preview, and wires the MCP config for Claude Code / Cursor.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shivam-app-developers/ai-optimizer.git",
+    "directory": "packages/init"
+  },
+  "homepage": "https://github.com/shivam-app-developers/ai-optimizer#readme",
+  "bugs": "https://github.com/shivam-app-developers/ai-optimizer/issues",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
