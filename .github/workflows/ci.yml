@@ -48,7 +48,7 @@ jobs:
       - name: MCP smoke test
         shell: bash
         run: |
-          printf '%s' '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"0.0.1"}}}' \
+          printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"0.0.1"}}}' \
             | node packages/core/bin/ai-optimizer.js > smoke.out &
           PID=$!
           sleep 2
