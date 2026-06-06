@@ -1,0 +1,32 @@
+{
+  "name": "@ai-optimizer/init",
+  "version": "0.1.0",
+  "description": "One-command setup for ai-optimizer — scans your repo, shows the savings preview, and wires the MCP config for Claude Code / Cursor.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "ai-optimizer-init": "./bin/ai-optimizer-init.js"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@ai-optimizer/core": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "vitest": "^2.1.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

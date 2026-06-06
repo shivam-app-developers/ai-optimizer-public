@@ -1,0 +1,23 @@
+# Smithery launch config — https://smithery.ai/docs/build/project-config
+# Local stdio MCP server. Smithery runs the installed `ai-optimizer` binary.
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      licenseKey:
+        type: string
+        title: License Key
+        description: >-
+          Optional Ed25519 JWT Pro/Team license key. Leave blank for the free
+          tier (Python + JS/TS packs). Unlocks the additional framework packs
+          and Pro/Team features.
+    additionalProperties: false
+  commandFunction: |-
+    (config) => ({
+      command: 'ai-optimizer',
+      args: [],
+      env: config.licenseKey
+        ? { AI_OPTIMIZER_LICENSE: config.licenseKey }
+        : {}
+    })

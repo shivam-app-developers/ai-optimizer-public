@@ -1,0 +1,49 @@
+{
+  "name": "@ai-optimizer/core",
+  "version": "0.1.0",
+  "description": "MCP server that cuts AI coding agent token usage via framework-aware context optimization",
+  "mcpName": "io.github.shivam-app-developers/ai-optimizer",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "ai-optimizer": "./bin/ai-optimizer.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "start": "node ./bin/ai-optimizer.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "cursor",
+    "ai",
+    "token-optimization",
+    "context-pruning"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "ignore": "^6.0.2",
+    "picomatch": "^4.0.2",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@types/picomatch": "^3.0.1",
+    "vitest": "^2.1.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

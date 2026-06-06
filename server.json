@@ -1,0 +1,60 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "io.github.shivam-app-developers/ai-optimizer",
+  "description": "MCP server that cuts AI coding agent token usage via framework-aware context optimization. Skips generated/build files, narrows reads via LSP, and strips shell noise before it reaches the model.",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/shivam-app-developers/ai-optimizer",
+    "source": "github"
+  },
+  "websiteUrl": "https://ai-optimizer.dev",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@ai-optimizer/core",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "AI_OPTIMIZER_LICENSE",
+          "description": "Ed25519-signed JWT license key. Unlocks Pro/Team framework packs and features. Free tier (Python + JS/TS) needs no key.",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "AI_OPTIMIZER_LSP",
+          "description": "Set to 0 to disable the LSP bridge (optimized_diagnostics). Enabled by default when a language server is on PATH.",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "AI_OPTIMIZER_TELEMETRY",
+          "description": "Set to 'on' to enable anonymous opt-in telemetry. Off by default; no install id is written to disk until the first send.",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "AI_OPTIMIZER_BUDGET_PER_SESSION",
+          "description": "Optional hard cap on tokens read per session. When breached, data-path tools return an error with a reset hint.",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "AI_OPTIMIZER_BUDGET_PER_DAY",
+          "description": "Optional hard cap on tokens read per UTC day (persisted, rolls at midnight).",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "AI_OPTIMIZER_SHOW_DOLLAR_VALUES",
+          "description": "Set to 0 to suppress the inline dollar-value savings estimate. On by default (display-only).",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}

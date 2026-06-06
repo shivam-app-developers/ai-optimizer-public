@@ -1,0 +1,49 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '07:00'
+      timezone: Asia/Kolkata
+    open-pull-requests-limit: 10
+    versioning-strategy: increase
+    commit-message:
+      prefix: deps
+      include: scope
+    groups:
+      typescript-toolchain:
+        patterns:
+          - 'typescript'
+          - '@types/*'
+          - 'tsx'
+          - 'eslint*'
+          - 'prettier'
+          - 'vitest'
+      next-react:
+        patterns:
+          - 'next'
+          - 'react'
+          - 'react-dom'
+          - 'tailwindcss'
+          - 'postcss'
+          - 'autoprefixer'
+    ignore:
+      # Major bumps for these are coordinated manually because they touch
+      # the LSP / scheduler / MCP integration paths.
+      - dependency-name: '@modelcontextprotocol/sdk'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'jose'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'cron-parser'
+        update-types: ['version-update:semver-major']
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: ci

@@ -1,0 +1,26 @@
+{
+  "name": "@ai-optimizer/sdk",
+  "version": "0.1.0",
+  "description": "Public SDK for authoring community framework packs for ai-optimizer. Use this to publish your own pack to npm — name it `ai-optimizer-pack-<framework>` and ai-optimizer will load it via the `plugins` config field.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "vitest": "^2.1.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

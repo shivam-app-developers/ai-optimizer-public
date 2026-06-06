@@ -1,0 +1,75 @@
+name: Release
+
+# Publishes the public packages with `--provenance` so npm shows the build
+# attestation. Triggered either by a tag push (vX.Y.Z) or manually from the
+# Actions UI. Private packages (`@ai-optimizer/pro`, `@ai-optimizer/pack-bench`,
+# the apps) are NOT published.
+#
+# Requires:
+#   - NPM_TOKEN secret (npm "Granular Access" token with publish on the
+#     @ai-optimizer scope)
+#   - The "id-token: write" permission for sigstore provenance
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Run npm publish --dry-run only'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    name: Publish public packages
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      - name: Publish @ai-optimizer/core
+        working-directory: packages/core
+        run: npm publish --provenance --access public ${{ inputs.dry-run && '--dry-run' || '' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @ai-optimizer/init
+        working-directory: packages/init
+        run: npm publish --provenance --access public ${{ inputs.dry-run && '--dry-run' || '' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @ai-optimizer/sdk
+        working-directory: packages/sdk
+        run: npm publish --provenance --access public ${{ inputs.dry-run && '--dry-run' || '' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @ai-optimizer/context-mode-import
+        working-directory: packages/context-mode-import
+        run: npm publish --provenance --access public ${{ inputs.dry-run && '--dry-run' || '' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

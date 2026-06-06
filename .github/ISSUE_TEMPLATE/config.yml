@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or discussion
+    url: https://github.com/shivam-app-developers/ai-optimizer/discussions
+    about: Open-ended questions, ideas, and showcase belong in Discussions.

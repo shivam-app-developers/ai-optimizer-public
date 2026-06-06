@@ -1,0 +1,33 @@
+{
+  "name": "@ai-optimizer/context-mode-import",
+  "version": "0.1.0",
+  "description": "One-command importer that translates a context-mode config into an ai-optimizer config (.optimizerrc.json).",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "ai-optimizer-import-context-mode": "./bin/ai-optimizer-import-context-mode.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@ai-optimizer/core": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "vitest": "^2.1.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
